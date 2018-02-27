@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>用更加智能的方式管理Vim插件 | Cano&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="用更加智能的方式管理Vim插件Vim的使用对于很多新手来说，实在是望尘莫及，折腾了好几天，却连几个插件都装不上的大有人在。 于是我特意写下此文，介绍了Vim插件管理器的使用方式和相关历史，同时加入了我自己对于管理插件方式的优化。 不过此文涉及到vimscript代码和vim的一些机制，不适合完全没接触过vim的新手。完全的新手应先通读vimtutor，掌握vim的基本知识和操作，再来阅读本文。">
+<meta name="keywords" content="vim,geek">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用更加智能的方式管理Vim插件">
+<meta property="og:url" content="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/index.html">
+<meta property="og:site_name" content="Cano&#39;s Blog">
+<meta property="og:description" content="用更加智能的方式管理Vim插件Vim的使用对于很多新手来说，实在是望尘莫及，折腾了好几天，却连几个插件都装不上的大有人在。 于是我特意写下此文，介绍了Vim插件管理器的使用方式和相关历史，同时加入了我自己对于管理插件方式的优化。 不过此文涉及到vimscript代码和vim的一些机制，不适合完全没接触过vim的新手。完全的新手应先通读vimtutor，掌握vim的基本知识和操作，再来阅读本文。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/junegunn/i/master/vim-plug/installer.gif">
+<meta property="og:updated_time" content="2018-02-27T00:32:00.852Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用更加智能的方式管理Vim插件">
+<meta name="twitter:description" content="用更加智能的方式管理Vim插件Vim的使用对于很多新手来说，实在是望尘莫及，折腾了好几天，却连几个插件都装不上的大有人在。 于是我特意写下此文，介绍了Vim插件管理器的使用方式和相关历史，同时加入了我自己对于管理插件方式的优化。 不过此文涉及到vimscript代码和vim的一些机制，不适合完全没接触过vim的新手。完全的新手应先通读vimtutor，掌握vim的基本知识和操作，再来阅读本文。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/junegunn/i/master/vim-plug/installer.gif">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/cano.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-114915715-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Cano&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/categories/math">Math</a>
+                
+                    <a class="main-nav-link" href="/categories/oi">OI</a>
+                
+                    <a class="main-nav-link" href="/categories/geek">Geek</a>
+                
+                    <a class="main-nav-link" href="/categories/music">Music</a>
+                
+                    <a class="main-nav-link" href="/categories/mc">Minecraft</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/cano.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/categories/math">Math</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories/oi">OI</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories/geek">Geek</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories/music">Music</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories/mc">Minecraft</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/cano.png" />
+            <h2 id="name">Cano XL</h2>
+            <h3 id="title">Geek &amp; Personal Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Henan, China</span>
+            <a id="follow" target="_blank" href="https://github.com/gcanoxl/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                1
+                <span>post</span>
+            </div>
+            <div class="article-info-block">
+                2
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/gcanoxl/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/gcanoxl/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.youtube.com/channel/UCvQNg4jmmkapJ7bNAXabKhA" target="_blank" title="youtube" class=tooltip>
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.zhihu.com/people/gcanoxl/" target="_blank" title="zhihu" class=tooltip>
+                            <i class="fa fa-zhihu"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-create-a-smart-vim-package-manager" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            用更加智能的方式管理Vim插件
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/12/02/create-a-smart-vim-package-manager/">
+            <time datetime="2016-12-01T20:32:50.000Z" itemprop="datePublished">2016-12-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/geek/">geek</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/geek/">geek</a>, <a class="tag-link" href="/tags/vim/">vim</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="用更加智能的方式管理Vim插件"><a href="#用更加智能的方式管理Vim插件" class="headerlink" title="用更加智能的方式管理Vim插件"></a>用更加智能的方式管理Vim插件</h1><p>Vim的使用对于很多新手来说，实在是望尘莫及，折腾了好几天，却连几个插件都装不上的大有人在。</p>
+<p>于是我特意写下此文，介绍了Vim插件管理器的使用方式和相关历史，同时加入了我自己对于管理插件方式的优化。</p>
+<p>不过此文涉及到vimscript代码和vim的一些机制，不适合完全没接触过vim的新手。完全的新手应先通读<code>vimtutor</code>，掌握vim的基本知识和操作，再来阅读本文。</p>
+<a id="more"></a>
+<h2 id="Vim的插件管理史"><a href="#Vim的插件管理史" class="headerlink" title="Vim的插件管理史"></a>Vim的插件管理史</h2><p>Vim本身并不带插件管理器，所以最早的时候，人们都是使用手工管理的方法，但是由于Vim本身插件目录结构的问题，插件一多管理起来就很麻烦。<br>每安装一个插件，都要把插件目录拆开然后一个个拷贝进<code>~/.vim/</code>里对应的目录（关于插件目录结构，这里不多说，有兴趣的朋友可以查文档和有关资料）</p>
+<h3 id="pathogen"><a href="#pathogen" class="headerlink" title="pathogen"></a>pathogen</h3><p>幸运的是，程序员们总是有着无穷的创造力和一颗热衷于折腾的心，于是后来就出现了第一代插件管理器<a href="https://github.com/tpope/vim-pathogen" target="_blank" rel="noopener">pathogen</a>，由世界级Vim大神 <a href="http://tpo.pe/" target="_blank" rel="noopener">Tim Pope</a>所编写。</p>
+<p>pathogen使用一个特定的目录来管理所有的插件，安装插件时，只需要将插件的repo整个clone到<code>~/.vim/bundle</code>里，pathogen会自动将所有插件文件夹加入<code>runtimepath</code><br>pathogen的出现让插件管理变得不那么麻烦了，但是问题是，如果你换了一台电脑，就必须把所有的插件重新一个个的clone一遍，如果只有四五个插件，工作量还在可控范围内，但如果你使用了几十个插件，那么这个操作会让人崩溃的。</p>
+<h3 id="vundle"><a href="#vundle" class="headerlink" title="vundle"></a>vundle</h3><p>有了pathogen的引路，很快，第二代插件管理器<a href="https://github.com/VundleVim/Vundle.vim" target="_blank" rel="noopener">vundle</a>横空出世。<br>vundle的插件管理方式更加方便，你所需要做的，就是在你的<code>~/.vimrc</code>文件里，插入</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">" 将vundle加入 runtimepath</span></span><br><span class="line"><span class="keyword">set</span> rtp+=~/.<span class="keyword">vim</span>/bundle/Vundle.<span class="keyword">vim</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" vundle 初始化</span></span><br><span class="line"><span class="keyword">call</span> vundle#begin(<span class="string">'~/some/path/here'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" 从 github 安装插件</span></span><br><span class="line">Plugin <span class="string">'user/repo'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" 从 vim-script.org 安装插件</span></span><br><span class="line">Plugin <span class="string">'plugin'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" 表示插件列表已经结束</span></span><br><span class="line"><span class="keyword">call</span> vundle#end()</span><br></pre></td></tr></table></figure>
+<p>然后执行 <code>:PluginInstall</code> 即可。</p>
+<p>这种管理方式不但轻松，而且插件列表都保存在<code>~/.vimrc</code>中，即使换了一台电脑，只要带上自己的vimrc，在哪儿都能迅速安装。</p>
+<h3 id="vim-plug"><a href="#vim-plug" class="headerlink" title="vim-plug"></a>vim-plug</h3><p>vundle作为一个插件管理器，已经非常强大了，但是接下来要介绍的插件管理器<a href="https://github.com/junegunn/vim-plug" target="_blank" rel="noopener">vim-plug</a>则更加强大。</p>
+<p>vim-plug没有什么颠覆性的改变，应该说是在vundle的基础上，做了更好的优化，比如多线程下载，在线安装的速度将会大幅提升（这一点，所有用过vundle后使用vim-plug的用户都有深刻体会）。</p>
+<p>放一张官网的GIF:<br><img src="https://raw.githubusercontent.com/junegunn/i/master/vim-plug/installer.gif" alt="vim-plug"></p>
+<p>同时，vim-plug支持针对不同的文件开启不同的插件，对于优化vim启动速度由很大帮助。</p>
+<h3 id="还有什么可做"><a href="#还有什么可做" class="headerlink" title="还有什么可做"></a>还有什么可做</h3><p>历史的部分已经全部讲完了，接下来进入今天的主题，<strong>将vim-plug配置的更加智能</strong>。</p>
+<h2 id="将vim-plug配置的更加智能"><a href="#将vim-plug配置的更加智能" class="headerlink" title="将vim-plug配置的更加智能"></a>将vim-plug配置的更加智能</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>照理说，vundle已经很强大了，而vim-plug在此基础上又做了优化，我们还能做什么呢？</p>
+<p>精益求精的心态是要有的，这样才能不断进步。 现在假设你换了一台新电脑，装好vim以后，你将vimrc放置好，然后打开……bingo，各种报错。</p>
+<p>这是因为没有安装vim-plug的原因，必须还要去安装一遍vim-plug，而且如果你把你的vimrc推荐给你的朋友，而你的朋友恰巧是个vim新手，可能装vim-plug都会让他头晕半个小时（我见过无数新手折腾好几天装不上vundle或者vim-plug），装好vim-plug之后，他还必须执行<code>:PlugInstall</code>，才能开始安装插件。</p>
+<p>所以，我们要优化的事情，有两件：</p>
+<ul>
+<li>自动安装vim-plug</li>
+<li>自动检查和安装插件</li>
+</ul>
+<p>这样，当你的朋友把vimrc放好，打开vim的时候，他所需要做的只是等一会儿，然后就可以用上和你一样的配置了！</p>
+<h3 id="自动安装vim-plug"><a href="#自动安装vim-plug" class="headerlink" title="自动安装vim-plug"></a>自动安装vim-plug</h3><p>安装vim-plug很简单，只需要将 <a href="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" target="_blank" rel="noopener">https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</a> 下载到 <code>~/.vim/autoload/plug.vim</code> 即可。</p>
+<p>所以我们可以在vimrc的顶部插入一段 vimscript 代码来做这个操作（vimrc就是一个vimscript源文件，vim启动的时候会读取这个文件并解析执行）。</p>
+<p>不过在此之前，我们还要做一件事情。</p>
+<h4 id="Neovim"><a href="#Neovim" class="headerlink" title="Neovim"></a>Neovim</h4><blockquote>
+<p>巴西程序员 Thiago de Arruda Padilha（aka tarruda）向 Vim开源编辑器项目递交了两大补丁，对Vim的架构进行了大幅调整，结果遭到了Vim作者Bram Moolenaar的拒绝，因为对于Vim这样一个成熟的项目进行如此大的改变风险太高。于是tarruda发起了Vim fork项目Neovim，集资1万美元打造出21世纪的编辑器，提供更好的脚本、插件支持，整合现代的图形界面。</p>
+</blockquote>
+<p>以上是neovim的来历，总的来说，neovim针对vim做了一定优化，主要是加入了大量异步操作，并且使用了<a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-0.6.html#introduction" target="_blank" rel="noopener">XDG标准</a>。</p>
+<p>所以原本的<code>~/.vimrc</code>，在neovim里就变成了<code>~/.config/nvim/init.vim</code>，原本的<code>~/.vim/</code>，在neovim则是<code>~/.config/nvim/</code>。</p>
+<p>为了我们的vimrc兼容性更强，我们先定义几个变量（neovim和vim的script语法完全一样）。</p>
+<p>在vimrc顶部插入：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">g:VIM_HOME</span> = <span class="built_in">expand</span>(<span class="string">'~/.vim'</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">'nvim'</span>)</span><br><span class="line">	<span class="keyword">let</span> <span class="variable">g:VIM_HOME</span> = <span class="built_in">expand</span>(<span class="string">'~/.config/nvim'</span>)</span><br><span class="line"><span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
+<p>这段代码将会判断你当前运行的是vim还是neovim，并且设置了全局变量<code>VIM_HOME</code>，指向<code>~/.vim/</code>或<code>~/.config/nvim/</code>。</p>
+<p>然后开始判断vim-plug是否已经安装，如果没有安装就从Github上下再下来，并放到<code>~/.vim/autoload/plug.vim</code>或<code>~/.config/nvim/autoload/plug.vim</code></p>
+<p>接着刚才的代码插入：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">s:vim_plug_path</span> = <span class="variable">g:VIM_HOME</span>.<span class="string">'/autoload/plug.vim'</span></span><br><span class="line"><span class="keyword">if</span> !filereadable(<span class="variable">s:vim_plug_path</span>)</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"Installing Vim-plug ..."</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">""</span></span><br><span class="line">	<span class="keyword">let</span> <span class="variable">s:vim_plug_git</span> = <span class="string">'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'</span></span><br><span class="line">	<span class="keyword">execute</span> <span class="string">"!curl -fLo "</span>.<span class="variable">s:vim_plug_path</span>.<span class="string">" --create-dirs "</span>.<span class="variable">s:vim_plug_git</span></span><br><span class="line"><span class="keyword">endif</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">s:vim_plugged_path</span> = <span class="variable">g:VIM_HOME</span>.<span class="string">'/plugged'</span></span><br></pre></td></tr></table></figure></p>
+<p>至此，自动安装vim-plug的功能已经实现了，每次vim启动的时候，都会检测plug.vim这个文件是否存在，如果不存在就下载它，存在则跳过。并且为了方便，我们声明了一个<code>s:vim_plugged_path</code>，以后会用到。</p>
+<h3 id="自动检查和安装插件"><a href="#自动检查和安装插件" class="headerlink" title="自动检查和安装插件"></a>自动检查和安装插件</h3><p>在安装好vim-plug以后，我们就可以开始正常使用vim-plug了。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> plug#begin(<span class="variable">s:vim_plugged_path</span>)</span><br><span class="line"></span><br><span class="line">Plug <span class="string">'xxxx/xxxx'</span></span><br><span class="line">Plug <span class="string">'xxxx/xxxx'</span></span><br><span class="line">Plug <span class="string">'xxxx/xxxx'</span></span><br><span class="line">Plug <span class="string">'xxxx/xxxx'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> plug#end()</span><br></pre></td></tr></table></figure>
+<p>不过这样的话，每次安装插件还是需要<code>:PlugInstall</code>，为了能自动检查是否有需要安装的插件并安装，我们需要每次在vim启动的时候，检测我们的插件列表里，是否有<code>s:vim_plugged_path</code>目录下没有的插件名称。</p>
+<p>不过vim-plug似乎没有提供查看插件列表的API，不过我们可以读vim-plug的源码。</p>
+<p>通过阅读<a href="https://github.com/junegunn/vim-plug/blob/master/plug.vim" target="_blank" rel="noopener">vim-plug源代码</a>，可以发现，Plug命令的定义是这样的</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command! -nargs=+ -bar Plug <span class="keyword">call</span> plug#(<span class="symbol">&lt;args&gt;</span>)</span><br></pre></td></tr></table></figure>
+<p>也就是说，每次<code>Plug &#39;xxxx/xxxx&#39;</code>的时候，实际上都是调用了<code>plug#()</code>这个函数，然后我们找到这个函数。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>! <span class="title">plug</span>#<span class="params">(repo, ...)</span></span></span><br><span class="line">  <span class="keyword">if</span> <span class="variable">a:0</span> &gt; <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">s:err</span>(<span class="string">'Invalid number of arguments (1..2)'</span>)</span><br><span class="line">  <span class="keyword">endif</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span></span><br><span class="line">    <span class="keyword">let</span> repo = <span class="variable">s:trim</span>(<span class="variable">a:repo</span>)</span><br><span class="line">    <span class="keyword">let</span> opts = <span class="variable">a:0</span> == <span class="number">1</span> ? <span class="variable">s:parse_options</span>(<span class="variable">a:1</span>) : <span class="variable">s:base_spec</span></span><br><span class="line">    <span class="keyword">let</span> name = <span class="built_in">get</span>(opts, <span class="string">'as'</span>, <span class="built_in">fnamemodify</span>(repo, <span class="string">':t:s?\.git$??'</span>))</span><br><span class="line">    <span class="keyword">let</span> spec = <span class="built_in">extend</span>(<span class="variable">s:infer_properties</span>(name, repo), opts)</span><br><span class="line">    <span class="keyword">if</span> !has_key(<span class="variable">g:plugs</span>, name)</span><br><span class="line">      <span class="keyword">call</span> <span class="built_in">add</span>(<span class="variable">g:plugs_order</span>, name)</span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">g:plugs</span>[name] = spec</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s:loaded</span>[name] = <span class="built_in">get</span>(<span class="variable">s:loaded</span>, name, <span class="number">0</span>)</span><br><span class="line">  <span class="keyword">catch</span></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">s:err</span>(<span class="variable">v:exception</span>)</span><br><span class="line">  <span class="keyword">endtry</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+<p>OK，至此我们已经明白了。我们使用Plug命令调用plug#()函数，然后plug#()函数，将我们传进去的参数也就是插件名称，加入全局变量<code>g:plugs_order</code>中。</p>
+<p>所以我们需要做的，只要遍历<code>g:plugs_order</code>变量，然后检查<code>s:vim_plugged_path</code>目录下是否有对应的文件夹，如果都有，就说明所有插件都安装了，则正常启动vim，否则就执行<code>:PlugInstall</code>来安装插件。</p>
+<p>先定义一个函数检查是否插件都已安装：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>! <span class="title">s</span>:<span class="title">is_need_install</span><span class="params">()</span></span></span><br><span class="line">	<span class="keyword">for</span> <span class="variable">l:plug_name</span> in <span class="variable">g:plugs_order</span></span><br><span class="line">		<span class="keyword">let</span> <span class="variable">l:plug_path</span> = <span class="variable">s:vim_plugged_path</span>.<span class="string">'/'</span>.<span class="variable">l:plug_name</span></span><br><span class="line">		<span class="keyword">if</span> !isdirectory(<span class="variable">l:plug_path</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">		<span class="keyword">endif</span></span><br><span class="line">    <span class="keyword">endfor</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+<p>接着我们调用这个函数，如果返回<code>1</code>则表示需要安装，就执行<code>:PlugInstall</code>。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="variable">s:is_need_install</span>()</span><br><span class="line">	<span class="keyword">echom</span> <span class="string">"Found new plugin(s) need to install."</span></span><br><span class="line">	:PlugInstall</span><br><span class="line"><span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
+<p><strong>OK！大功告成。接着我们可以通过写其他的配置语句，定制化属于自己的vim。</strong></p>
+<p><del>在此附上我的配置：<a href="https://github.com/gcanoxl/dotfiles/blob/master/dotfiles/vimrc" target="_blank" rel="noopener">Cano’s Vim Config</a> (地址已失效）</del></p>
+<p>不过需要说明的是，Vim对我来说只是一个强大的文本编辑器，更多用于修改配置文件什么的。我主要的开发环境是Emacs，所以任何智能补全，语法检查功能都没有，如果你要使用我的配置文件作为主力开发工具，还需要自己打磨一番。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/" data-id="cje694lym0002acvefx1ps1d9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Cano<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/';
+        
+        this.page.identifier = 'create-a-smart-vim-package-manager';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'gcanoxl' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
