@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.cano.xyz/test.html</loc>
+    
+    <lastmod>2018-12-22T10:56:33.566Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.cano.xyz/about/index.html</loc>
     
-    <lastmod>2018-02-27T22:24:47.304Z</lastmod>
+    <lastmod>2018-02-27T22:24:47.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/</loc>
     
-    <lastmod>2018-02-27T00:32:00.852Z</lastmod>
+    <lastmod>2018-02-27T00:32:00.000Z</lastmod>
     
   </url>
   
