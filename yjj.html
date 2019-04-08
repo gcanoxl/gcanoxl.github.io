@@ -1,0 +1,65 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>盐焗鸡的做法</title>
+    <style>
+      #a1{
+    		margin-left: 50px;
+    	}
+      #iput{
+        height: 35px;
+    		width: 200px;
+    		border-radius: 10px;
+    		box-shadow: 0px 2px 0px grey;
+        outline: 0px;
+    		margin-left: 50px;
+    		margin-top: 20px;
+    		margin-right: 10px;
+      }
+      #submit{
+        width: 50px;
+    		height: 40px;
+    		border-radius: 5px;
+    		outline:0px;
+      }
+    </style>
+	<script>
+		window.onload = function() {
+        var sb = document.getElementById('submit');
+        var input = document.getElementById('iput')
+        var c = document.getElementById('content')
+        setInterval(function() {
+          var r = Math.floor(Math.random()*256);
+          var g = Math.floor(Math.random()*256);
+          var b = Math.floor(Math.random()*256);
+          var color = '#'+r.toString(16)+g.toString(16)+b.toString(16);
+          document.body.style.backgroundColor = color;
+          var r = Math.floor(Math.random()*256);
+          var g = Math.floor(Math.random()*256);
+          var b = Math.floor(Math.random()*256);
+          var color = '#'+r.toString(16)+g.toString(16)+b.toString(16);
+          document.body.style.color = color;
+        }, 700);
+
+        sb.onclick = function() {
+          c.innerHTML = c.innerHTML + input.value;
+          input.value = '';
+          alert('嘿，你他娘的还真是个天才！');
+        }
+      }
+	</script>
+</head>
+
+<body>
+	<div id="h1">盐焗的测试demo</div>
+	<div id="content">
+		<h3>接故事挑战</h3>
+    <h2>试试你能和别人一起创造点什么？</h2>
+		<div id="a1" name="user-c">许多年前...</div>
+	</div>
+	<div>
+		<input id="iput" placeholder=" 输入你想接的句子/内容">
+        <button id="submit">提交</button>
+      </div>
+  </body>
+</html>

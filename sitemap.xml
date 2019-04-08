@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.cano.xyz/yjj.html</loc>
+    
+    <lastmod>2019-04-08T10:43:36.969Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.cano.xyz/test.html</loc>
     
-    <lastmod>2018-12-22T10:56:33.566Z</lastmod>
+    <lastmod>2018-12-22T10:56:33.000Z</lastmod>
     
   </url>
   
