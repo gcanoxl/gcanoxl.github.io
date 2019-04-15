@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/</loc>
-    <lastmod>2019-04-09T14:46:05.223Z</lastmod>
+    <loc>http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/</loc>
+    <lastmod>2019-04-15T11:17:42.377Z</lastmod>
     <data>
         <display>
-        <title>用更加智能的方式管理Vim插件</title>
-        <pubTime>2016-12-01T20:32:50.000Z</pubTime>
+        <title>使用git来备份和管理Minecraft存档 之 理论篇</title>
+        <pubTime>2019-04-15T10:23:26.921Z</pubTime>
         
-        <tag>vim</tag>
+        <tag>minecraft</tag>
          
         <tag>geek</tag>
          
@@ -29,4 +29,26 @@
     
     
     
+    
+  <url>
+    <loc>http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/</loc>
+    <lastmod>2018-02-27T00:32:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>用更加智能的方式管理Vim插件</title>
+        <pubTime>2016-12-01T20:32:50.000Z</pubTime>
+        
+        <tag>geek</tag>
+         
+        <tag>vim</tag>
+         
+         
+           
+             
+              <breadCrumb title="geek" url="http://blog.cano.xyz/categories/geek/"/>
+          
+        </display>
+    </data>
+    </url>
+
 </urlset>

@@ -3,15 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Cano&#39;s Blog</title>
+    <title>使用git来备份和管理Minecraft存档 之 理论篇 | Cano&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Cano&#39;s Blog">
-<meta property="og:url" content="http://blog.cano.xyz/index.html">
+    <meta name="description" content="使用git来备份Minecraft存档 之 理论篇在Minecraft中，世界存档备份和管理是很重要的话题。毕竟一个存档可能是一个人甚至一群人投入了几天几个月乃至几年精力和时间的成果，谁都不希望存档丢失。那么就需要一个合理的存档备份和管理方案。本文将会教你如何用强大的git工具，来备份和管理Minecraft存档。无论是单机还是服务器，这种方式都可以使用，并且非常灵活强大。">
+<meta name="keywords" content="minecraft,geek">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用git来备份和管理Minecraft存档 之 理论篇">
+<meta property="og:url" content="http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/index.html">
 <meta property="og:site_name" content="Cano&#39;s Blog">
+<meta property="og:description" content="使用git来备份Minecraft存档 之 理论篇在Minecraft中，世界存档备份和管理是很重要的话题。毕竟一个存档可能是一个人甚至一群人投入了几天几个月乃至几年精力和时间的成果，谁都不希望存档丢失。那么就需要一个合理的存档备份和管理方案。本文将会教你如何用强大的git工具，来备份和管理Minecraft存档。无论是单机还是服务器，这种方式都可以使用，并且非常灵活强大。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-04-15T11:17:42.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cano&#39;s Blog">
+<meta name="twitter:title" content="使用git来备份和管理Minecraft存档 之 理论篇">
+<meta name="twitter:description" content="使用git来备份Minecraft存档 之 理论篇在Minecraft中，世界存档备份和管理是很重要的话题。毕竟一个存档可能是一个人甚至一群人投入了几天几个月乃至几年精力和时间的成果，谁都不希望存档丢失。那么就需要一个合理的存档备份和管理方案。本文将会教你如何用强大的git工具，来备份和管理Minecraft存档。无论是单机还是服务器，这种方式都可以使用，并且非常灵活强大。">
     
 
     
@@ -207,16 +212,15 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-    <article id="post-using-git-to-backup-minecraft-world" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-using-git-to-backup-minecraft-world" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
             <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/04/15/using-git-to-backup-minecraft-world/">使用git来备份和管理Minecraft存档 之 理论篇</a>
+        <h1 class="article-title" itemprop="name">
+            使用git来备份和管理Minecraft存档 之 理论篇
         </h1>
     
 
@@ -250,10 +254,29 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h1 id="使用git来备份Minecraft存档-之-理论篇"><a href="#使用git来备份Minecraft存档-之-理论篇" class="headerlink" title="使用git来备份Minecraft存档 之 理论篇"></a>使用git来备份Minecraft存档 之 理论篇</h1><p>在Minecraft中，世界存档备份和管理是很重要的话题。<br>毕竟一个存档可能是一个人甚至一群人投入了几天几个月乃至几年精力和时间的成果，谁都不希望存档丢失。<br>那么就需要一个合理的存档备份和管理方案。本文将会教你如何用强大的git工具，来备份和管理Minecraft存档。<br>无论是单机还是服务器，这种方式都可以使用，并且非常灵活强大。<br></p>
-            <p class="article-more-link">
-                <a href="/2019/04/15/using-git-to-backup-minecraft-world/#more">Read More</a>
-            </p>
+            
+            <h1 id="使用git来备份Minecraft存档-之-理论篇"><a href="#使用git来备份Minecraft存档-之-理论篇" class="headerlink" title="使用git来备份Minecraft存档 之 理论篇"></a>使用git来备份Minecraft存档 之 理论篇</h1><p>在Minecraft中，世界存档备份和管理是很重要的话题。<br>毕竟一个存档可能是一个人甚至一群人投入了几天几个月乃至几年精力和时间的成果，谁都不希望存档丢失。<br>那么就需要一个合理的存档备份和管理方案。本文将会教你如何用强大的git工具，来备份和管理Minecraft存档。<br>无论是单机还是服务器，这种方式都可以使用，并且非常灵活强大。<br><a id="more"></a></p>
+<h2 id="传统的存档管理方式的优点和缺点"><a href="#传统的存档管理方式的优点和缺点" class="headerlink" title="传统的存档管理方式的优点和缺点"></a>传统的存档管理方式的优点和缺点</h2><p>传统的管理存档主要有以下几种方式：</p>
+<h3 id="使用U盘备份"><a href="#使用U盘备份" class="headerlink" title="使用U盘备份"></a>使用U盘备份</h3><p>U盘是最为传统的备份数据的方式之一，优点是无需网络，且备份速度比较快，但缺点也就比较多了。<br>首先U盘必须随身携带，容易丢失，还不能做到自动备份。而且我个人使用的mbp还没有USB接口，用U盘还得随身带个转接头，太麻烦了。</p>
+<p><strong>总结：</strong><br>安全指数：★★★☆☆<br>方便指数：★★★☆☆<br>灵活指数：★☆☆☆☆</p>
+<h3 id="使用网盘备份"><a href="#使用网盘备份" class="headerlink" title="使用网盘备份"></a>使用网盘备份</h3><p>这里的网盘包括两类，一类是以<code>Google Drive</code>，<code>百度云</code>为代表的上传型网盘，另一类是以<code>Dropbox</code>为代表的同步型网盘。<br>上传型网盘的储存空间一般比同步型网盘要大，但需要用户手动上传下载，比较不方便。而且每次必须要整个文件上传一次，也是很浪费网络资源的。</p>
+<p>而同步型网盘则更适用于备份Minecraft存档，首先可以全自动备份，不需要用户操心，其次能做到增量同步，节省网络资源。<br>并且如果你有两台以上电脑，可以在一台玩完存档，在另一台电脑上玩的时候完全无缝连接。</p>
+<p>而缺点也很明显，首先最大的问题是，在服务器上很麻烦，因为无论是<code>Google Drive</code>，<code>百度云</code>，还是<code>Dropbox</code>都没有提供服务器版本的客户端，这就使得服务器上的自动备份很麻烦。</p>
+<p><em>在使用Git之前，我一直便使用的这种方式备份Minecraft存档</em>。</p>
+<p><strong>总结</strong><br>安全指数：★★★★★<br>方便指数：★★★★★<br>灵活指数：★★★☆☆</p>
+<h3 id="使用同步工具备份"><a href="#使用同步工具备份" class="headerlink" title="使用同步工具备份"></a>使用同步工具备份</h3><p>例如<code>rsync</code>等同步备份工具。这种方式要实现自动备份，通常要和shell脚本及<code>crontab</code>结合，但即使实现了自动备份，也无非就是和网盘备份差不多，只不过可以更方便的在服务器上使用罢了。</p>
+<p>这种方式的缺点则在于，必须要有另一个备份机器。例如要备份服务器上的存档，那么备份方式就是同步到本地来。或者要备份本地的存档，就同步到服务器去，因为<code>rsync</code>只是一个增量同步工具，并不会给你增加一个储存空间来。</p>
+<p><code>CanCraft</code><em>第一周目便使用此种备份方式，将服务器存档定时同步到所有玩家的本地。</em></p>
+<p><strong>总结</strong><br>安全指数：★★★★☆<br>方便指数：★★★★★<br>灵活指数：★★★☆☆</p>
+<h2 id="为什么要用Git"><a href="#为什么要用Git" class="headerlink" title="为什么要用Git"></a>为什么要用Git</h2><p>上面已经列举了传统的备份方式，客观的说，对于要求不高的玩家来说，已经足够使用了。<br>但我还是选择了Git，因为Git首先Git有以上所有工具的共同优点。其次，作为一个版本管理工具，Git有以上所有备份方式都没有的逆天功能——<em>版本控制</em></p>
+<p>假设你在MC中，正打算做个大型的建筑红石机械什么的。<br>你收集够了材料，做好了一切前期准备工作和测算等等，豪情万丈的开始动工了，仿佛已经看到了建筑的美轮美奂和机械的精妙绝伦。<br>但遗憾的是，由于你对这个工程并不熟悉，等你做了一大半，你突然的发现，因为某些之前没想到的原因，导致工程无法进行下去，必须要拆掉重新来过。<br>这时候假如你没有使用版本控制系统，那么你必须手动一点点拆除。而若是使用了版本控制系统，你只需要一个命令，就能使存档恢复到开工之前。</p>
+<p>而且更重要的是，你可以用版本控制系统，在任意时间段，看到详细的存档发展过程，从一个荒凉的世界，变成一片都市家园。该多么美好啊……</p>
+<p>如果你把你的存档发给了朋友，他也可以从过去的某个版本，开始游玩，而不用从最新的版本开始游玩。</p>
+<p>你可能会说，各个阶段把存档复制一份单独备份也可以啊。理论上是可以，但是假设存档有<code>500M</code>，那你备份10份就要<code>5G</code>。<br>即使你硬盘够大，但硬盘大也不能浪费啊，我们还是得坚持朴素的劳动人民作风……</p>
+<p>而用Git管理，即使备份了一千个版本，那么也只需要<code>500M</code>多一点<em>（Git需要一点空间来储存版本信息）</em></p>
+<h2 id="分之管理的策略"><a href="#分之管理的策略" class="headerlink" title="分之管理的策略"></a>分之管理的策略</h2><p>我个人在使用的时候，是开了两个分支，一个是<code>Master</code>分支，一个是<code>Daily</code>分支。<br>顾名思义，<code>Daily</code>分支使用<code>crontab</code>每天自动提交并同步到<code>Github</code>，commit信息随便填都行。<br>而当你完成了某个工程，或者认为这是一个需要备份的时间点，那么应该<code>merge</code>到<code>Master</code>分支去。<br>这么做主要是因为，随着时间的推移，<code>Daily</code>分支可能有几百上千个提交，非常难以查找和管理。<br>参见下图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Alice-&gt;Bob</span><br></pre></td></tr></table></figure>
+
         
         </div>
         <footer class="article-footer">
@@ -337,143 +360,30 @@ ga('send', 'pageview');
         </footer>
     </div>
     
-</article>
-
-
-
-    <article id="post-create-a-smart-vim-package-manager" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
         
-        
-            <header class="article-header">
-                
+<nav id="article-nav">
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/12/02/create-a-smart-vim-package-manager/">用更加智能的方式管理Vim插件</a>
-        </h1>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/12/02/create-a-smart-vim-package-manager/">
-            <time datetime="2016-12-01T20:32:50.000Z" itemprop="datePublished">2016-12-02</time>
+        <a href="/2016/12/02/create-a-smart-vim-package-manager/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">用更加智能的方式管理Vim插件</div>
         </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/geek/">geek</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/geek/">geek</a>, <a class="tag-link" href="/tags/vim/">vim</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h1 id="用更加智能的方式管理Vim插件"><a href="#用更加智能的方式管理Vim插件" class="headerlink" title="用更加智能的方式管理Vim插件"></a>用更加智能的方式管理Vim插件</h1><p>Vim的使用对于很多新手来说，实在是望尘莫及，折腾了好几天，却连几个插件都装不上的大有人在。</p>
-<p>于是我特意写下此文，介绍了Vim插件管理器的使用方式和相关历史，同时加入了我自己对于管理插件方式的优化。</p>
-<p>不过此文涉及到vimscript代码和vim的一些机制，不适合完全没接触过vim的新手。完全的新手应先通读<code>vimtutor</code>，掌握vim的基本知识和操作，再来阅读本文。</p></p>
-            <p class="article-more-link">
-                <a href="/2016/12/02/create-a-smart-vim-package-manager/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/" data-id="cjui8hbvk000cyewq5xnd4yaf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/">Comments</a>
-    
+</nav>
 
-        </footer>
-    </div>
+
     
 </article>
 
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
 
 </section>
             
@@ -491,11 +401,13 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = '';
+            this.page.url = 'http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/';
+        
+        this.page.identifier = 'using-git-to-backup-minecraft-world';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'gcanoxl' + '.disqus.com/count.js';
+        s.src = '//' + 'gcanoxl' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
