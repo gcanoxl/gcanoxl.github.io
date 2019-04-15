@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang=en>
-<head>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
     <title>使用git来备份和管理Minecraft存档 之 理论篇 | Cano&#39;s Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="使用git来备份Minecraft存档 之 理论篇在Minecraft中，世界存档备份和管理是很重要的话题。毕竟一个存档可能是一个人甚至一群人投入了几天几个月乃至几年精力和时间的成果，谁都不希望存档丢失。那么就需要一个合理的存档备份和管理方案。本文将会教你如何用强大的git工具，来备份和管理Minecraft存档。无论是单机还是服务器，这种方式都可以使用，并且非常灵活强大。">
 <meta name="keywords" content="minecraft,geek">
 <meta property="og:type" content="article">
@@ -13,16 +13,18 @@
 <meta property="og:site_name" content="Cano&#39;s Blog">
 <meta property="og:description" content="使用git来备份Minecraft存档 之 理论篇在Minecraft中，世界存档备份和管理是很重要的话题。毕竟一个存档可能是一个人甚至一群人投入了几天几个月乃至几年精力和时间的成果，谁都不希望存档丢失。那么就需要一个合理的存档备份和管理方案。本文将会教你如何用强大的git工具，来备份和管理Minecraft存档。无论是单机还是服务器，这种方式都可以使用，并且非常灵活强大。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-15T11:17:42.377Z">
+<meta property="og:image" content="https://i.loli.net/2019/04/15/5cb47a3071e3d.png">
+<meta property="og:updated_time" content="2019-04-15T12:38:32.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用git来备份和管理Minecraft存档 之 理论篇">
 <meta name="twitter:description" content="使用git来备份Minecraft存档 之 理论篇在Minecraft中，世界存档备份和管理是很重要的话题。毕竟一个存档可能是一个人甚至一群人投入了几天几个月乃至几年精力和时间的成果，谁都不希望存档丢失。那么就需要一个合理的存档备份和管理方案。本文将会教你如何用强大的git工具，来备份和管理Minecraft存档。无论是单机还是服务器，这种方式都可以使用，并且非常灵活强大。">
+<meta name="twitter:image" content="https://i.loli.net/2019/04/15/5cb47a3071e3d.png">
     
 
     
 
     
-        <link rel="icon" href="/css/images/cano.png" />
+        <link rel="icon" href="/css/images/cano.png">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -56,7 +58,7 @@ ga('send', 'pageview');
 
 
 </head>
-
+</html>
 <body>
     <div id="container">
         <header id="header">
@@ -82,7 +84,7 @@ ga('send', 'pageview');
                 <nav id="sub-nav">
                     <div class="profile" id="profile-nav">
                         <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/cano.png" />
+                            <img class="avatar" src="/css/images/cano.png">
                             <i class="fa fa-caret-down"></i>
                         </a>
                     </div>
@@ -91,14 +93,14 @@ ga('send', 'pageview');
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <input type="text" class="ins-search-input" placeholder="Type something...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -142,7 +144,7 @@ ga('send', 'pageview');
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
     </div>
 
                 </td>
@@ -158,7 +160,7 @@ ga('send', 'pageview');
 <aside id="profile">
     <div class="inner profile-inner">
         <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/cano.png" />
+            <img id="avatar" src="/css/images/cano.png">
             <h2 id="name">Cano XL</h2>
             <h3 id="title">Geek &amp; Personal Developer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Henan, China</span>
@@ -181,25 +183,25 @@ ga('send', 'pageview');
                     
                     
                     <td>
-                        <a href="http://github.com/gcanoxl/" target="_blank" title="github" class=tooltip>
+                        <a href="http://github.com/gcanoxl/" target="_blank" title="github" class="tooltip">
                             <i class="fa fa-github"></i>
                         </a>
                     </td>
                     
                     <td>
-                        <a href="https://twitter.com/gcanoxl/" target="_blank" title="twitter" class=tooltip>
+                        <a href="https://twitter.com/gcanoxl/" target="_blank" title="twitter" class="tooltip">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </td>
                     
                     <td>
-                        <a href="https://www.youtube.com/channel/UCvQNg4jmmkapJ7bNAXabKhA" target="_blank" title="youtube" class=tooltip>
+                        <a href="https://www.youtube.com/channel/UCvQNg4jmmkapJ7bNAXabKhA" target="_blank" title="youtube" class="tooltip">
                             <i class="fa fa-youtube"></i>
                         </a>
                     </td>
                     
                     <td>
-                        <a href="https://www.zhihu.com/people/gcanoxl/" target="_blank" title="zhihu" class=tooltip>
+                        <a href="https://www.zhihu.com/people/gcanoxl/" target="_blank" title="zhihu" class="tooltip">
                             <i class="fa fa-zhihu"></i>
                         </a>
                     </td>
@@ -269,13 +271,17 @@ ga('send', 'pageview');
 <p><code>CanCraft</code><em>第一周目便使用此种备份方式，将服务器存档定时同步到所有玩家的本地。</em></p>
 <p><strong>总结</strong><br>安全指数：★★★★☆<br>方便指数：★★★★★<br>灵活指数：★★★☆☆</p>
 <h2 id="为什么要用Git"><a href="#为什么要用Git" class="headerlink" title="为什么要用Git"></a>为什么要用Git</h2><p>上面已经列举了传统的备份方式，客观的说，对于要求不高的玩家来说，已经足够使用了。<br>但我还是选择了Git，因为Git首先Git有以上所有工具的共同优点。其次，作为一个版本管理工具，Git有以上所有备份方式都没有的逆天功能——<em>版本控制</em></p>
+<blockquote>
 <p>假设你在MC中，正打算做个大型的建筑红石机械什么的。<br>你收集够了材料，做好了一切前期准备工作和测算等等，豪情万丈的开始动工了，仿佛已经看到了建筑的美轮美奂和机械的精妙绝伦。<br>但遗憾的是，由于你对这个工程并不熟悉，等你做了一大半，你突然的发现，因为某些之前没想到的原因，导致工程无法进行下去，必须要拆掉重新来过。<br>这时候假如你没有使用版本控制系统，那么你必须手动一点点拆除。而若是使用了版本控制系统，你只需要一个命令，就能使存档恢复到开工之前。</p>
+</blockquote>
 <p>而且更重要的是，你可以用版本控制系统，在任意时间段，看到详细的存档发展过程，从一个荒凉的世界，变成一片都市家园。该多么美好啊……</p>
 <p>如果你把你的存档发给了朋友，他也可以从过去的某个版本，开始游玩，而不用从最新的版本开始游玩。</p>
 <p>你可能会说，各个阶段把存档复制一份单独备份也可以啊。理论上是可以，但是假设存档有<code>500M</code>，那你备份10份就要<code>5G</code>。<br>即使你硬盘够大，但硬盘大也不能浪费啊，我们还是得坚持朴素的劳动人民作风……</p>
 <p>而用Git管理，即使备份了一千个版本，那么也只需要<code>500M</code>多一点<em>（Git需要一点空间来储存版本信息）</em></p>
-<h2 id="分之管理的策略"><a href="#分之管理的策略" class="headerlink" title="分之管理的策略"></a>分之管理的策略</h2><p>我个人在使用的时候，是开了两个分支，一个是<code>Master</code>分支，一个是<code>Daily</code>分支。<br>顾名思义，<code>Daily</code>分支使用<code>crontab</code>每天自动提交并同步到<code>Github</code>，commit信息随便填都行。<br>而当你完成了某个工程，或者认为这是一个需要备份的时间点，那么应该<code>merge</code>到<code>Master</code>分支去。<br>这么做主要是因为，随着时间的推移，<code>Daily</code>分支可能有几百上千个提交，非常难以查找和管理。<br>参见下图。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Alice-&gt;Bob</span><br></pre></td></tr></table></figure>
+<h2 id="分之管理的策略"><a href="#分之管理的策略" class="headerlink" title="分之管理的策略"></a>分之管理的策略</h2><p>我个人在使用的时候，是开了两个分支，一个是<code>master</code>分支，一个是<code>daily</code>分支。<br>顾名思义，<code>daily</code>分支使用<code>crontab</code>每天自动提交并同步到<code>Github</code>，commit信息随便填都行。<br>而当你完成了某个工程，或者认为这是一个需要备份的时间点，那么应该<code>merge</code>到<code>master</code>分支去。<br>这么做主要是因为，随着时间的推移，<code>daily</code>分支可能有几百上千个提交，非常难以查找和管理。<br>参见下图。</p>
+<p><img src="https://i.loli.net/2019/04/15/5cb47a3071e3d.png" alt><br><strong>日常更新由<code>crontab</code>自动化完成.</strong></p>
+<p>这样，我们便能方便的管理和备份Minecraft存档了。</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>Git的使用并不复杂，只需要几个命令（也可以使用图形化的管理界面），下一篇文章就会教大家如何实际使用Git来管理Minecraft存档.</p>
 
         
         </div>
@@ -286,7 +292,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/" data-id="cjui8hbun0004yewq5qdxgav5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/" data-id="cjuibsjd200057kwqwce8a2lx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

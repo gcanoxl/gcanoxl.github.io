@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang=en>
-<head>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
     <title>用更加智能的方式管理Vim插件 | Cano&#39;s Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="用更加智能的方式管理Vim插件Vim的使用对于很多新手来说，实在是望尘莫及，折腾了好几天，却连几个插件都装不上的大有人在。 于是我特意写下此文，介绍了Vim插件管理器的使用方式和相关历史，同时加入了我自己对于管理插件方式的优化。 不过此文涉及到vimscript代码和vim的一些机制，不适合完全没接触过vim的新手。完全的新手应先通读vimtutor，掌握vim的基本知识和操作，再来阅读本文。">
 <meta name="keywords" content="geek,vim">
 <meta property="og:type" content="article">
@@ -24,7 +24,7 @@
     
 
     
-        <link rel="icon" href="/css/images/cano.png" />
+        <link rel="icon" href="/css/images/cano.png">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -58,7 +58,7 @@ ga('send', 'pageview');
 
 
 </head>
-
+</html>
 <body>
     <div id="container">
         <header id="header">
@@ -84,7 +84,7 @@ ga('send', 'pageview');
                 <nav id="sub-nav">
                     <div class="profile" id="profile-nav">
                         <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/cano.png" />
+                            <img class="avatar" src="/css/images/cano.png">
                             <i class="fa fa-caret-down"></i>
                         </a>
                     </div>
@@ -93,14 +93,14 @@ ga('send', 'pageview');
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <input type="text" class="ins-search-input" placeholder="Type something...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -144,7 +144,7 @@ ga('send', 'pageview');
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
     </div>
 
                 </td>
@@ -160,7 +160,7 @@ ga('send', 'pageview');
 <aside id="profile">
     <div class="inner profile-inner">
         <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/cano.png" />
+            <img id="avatar" src="/css/images/cano.png">
             <h2 id="name">Cano XL</h2>
             <h3 id="title">Geek &amp; Personal Developer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Henan, China</span>
@@ -183,25 +183,25 @@ ga('send', 'pageview');
                     
                     
                     <td>
-                        <a href="http://github.com/gcanoxl/" target="_blank" title="github" class=tooltip>
+                        <a href="http://github.com/gcanoxl/" target="_blank" title="github" class="tooltip">
                             <i class="fa fa-github"></i>
                         </a>
                     </td>
                     
                     <td>
-                        <a href="https://twitter.com/gcanoxl/" target="_blank" title="twitter" class=tooltip>
+                        <a href="https://twitter.com/gcanoxl/" target="_blank" title="twitter" class="tooltip">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </td>
                     
                     <td>
-                        <a href="https://www.youtube.com/channel/UCvQNg4jmmkapJ7bNAXabKhA" target="_blank" title="youtube" class=tooltip>
+                        <a href="https://www.youtube.com/channel/UCvQNg4jmmkapJ7bNAXabKhA" target="_blank" title="youtube" class="tooltip">
                             <i class="fa fa-youtube"></i>
                         </a>
                     </td>
                     
                     <td>
-                        <a href="https://www.zhihu.com/people/gcanoxl/" target="_blank" title="zhihu" class=tooltip>
+                        <a href="https://www.zhihu.com/people/gcanoxl/" target="_blank" title="zhihu" class="tooltip">
                             <i class="fa fa-zhihu"></i>
                         </a>
                     </td>
@@ -324,7 +324,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/" data-id="cjui8hbvk000cyewq5xnd4yaf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/" data-id="cjuibsje2000c7kwqs7s78iio" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
