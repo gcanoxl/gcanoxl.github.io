@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.cano.xyz/2020/02/06/infosafe/</loc>
+    
+    <lastmod>2020-02-06T03:35:48.826Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/</loc>
     
-    <lastmod>2019-04-15T12:38:32.593Z</lastmod>
+    <lastmod>2019-04-15T12:38:32.000Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>http://blog.cano.xyz/about/index.html</loc>
     
     <lastmod>2018-02-27T22:24:47.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/</loc>
-    
-    <lastmod>2018-02-27T00:32:00.000Z</lastmod>
     
   </url>
   
