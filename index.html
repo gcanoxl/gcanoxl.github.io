@@ -161,11 +161,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                2
+                3
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                2
+                3
                 <span>tags</span>
             </div>
         </div>
@@ -248,7 +248,7 @@ ga('send', 'pageview');
             
             <p>针对信息安全，我总结了两个基本原则和三个防卫级别。仅作为参考使用，考量不周之处还望海涵。</p>
 <h1 id="两原则"><a href="#两原则" class="headerlink" title="两原则"></a>两原则</h1><p>原则指的是，任何与信息安全相关的事情，都要从这两个角度进行考量。</p>
-<h2 id="一：任何人都不可信"><a href="#一：任何人都不可信" class="headerlink" title="一：任何人都不可信"></a>一：任何人都不可信</h2><p>在现代高速发展的技术时代，技术上对信息安全的防御已经做得很好了，但<br><code>人永远是最大的漏洞</code> 。</p>
+<h2 id="一：任何人都不可信"><a href="#一：任何人都不可信" class="headerlink" title="一：任何人都不可信"></a>一：任何人都不可信</h2><p>在现代高速发展的技术时代，技术上对信息安全的防御已经做得很好了，但 <code>人永远是最大的漏洞</code> 。</p>
 <p>就好比你重金购买了一把全世界最先进最精密的防盗门锁，单纯从技术手段几乎无法破解，但假如在你准备锁门时，突然接到医院的电话被告知，你爸出车祸现在已经被送往医院了要你迅速前往，你一慌乱忘记锁门了。</p>
 <p>那么这把最先进的门锁就 <code>轻而易举</code> 的被破解了。</p>
 <h2 id="二：安全性与便利性成反比"><a href="#二：安全性与便利性成反比" class="headerlink" title="二：安全性与便利性成反比"></a>二：安全性与便利性成反比</h2><p>这也是很容易理解的一点。举个例子，你在门上锁十把锁肯定比锁一把锁安全，但在开门时也会非常麻烦。</p>
@@ -273,7 +273,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://blog.cano.xyz/2020/02/06/infosafe/" data-id="ck6a6mi9u0004ihov6mm2k9yt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://blog.cano.xyz/2020/02/06/infosafe/" data-id="ck6h69noh000cw0ovetncnnuq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -406,7 +406,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/" data-id="ck6a6mia40006ihovtg0v8gpu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/" data-id="ck6h69nnh0005w0ovhl6r9peo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -475,6 +475,141 @@ ga('send', 'pageview');
             
     
         <a href="http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-create-a-smart-vim-package-manager" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/12/02/create-a-smart-vim-package-manager/">用更加智能的方式管理Vim插件</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/12/02/create-a-smart-vim-package-manager/">
+            <time datetime="2016-12-01T20:32:50.000Z" itemprop="datePublished">2016-12-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/geek/">geek</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/geek/">geek</a>, <a class="tag-link" href="/tags/vim/">vim</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p></p><h1 id="用更加智能的方式管理Vim插件"><a href="#用更加智能的方式管理Vim插件" class="headerlink" title="用更加智能的方式管理Vim插件"></a>用更加智能的方式管理Vim插件</h1><p>Vim的使用对于很多新手来说，实在是望尘莫及，折腾了好几天，却连几个插件都装不上的大有人在。</p>
+<p>于是我特意写下此文，介绍了Vim插件管理器的使用方式和相关历史，同时加入了我自己对于管理插件方式的优化。</p>
+<p>不过此文涉及到vimscript代码和vim的一些机制，不适合完全没接触过vim的新手。完全的新手应先通读<code>vimtutor</code>，掌握vim的基本知识和操作，再来阅读本文。</p><p></p>
+            <p class="article-more-link">
+                <a href="/2016/12/02/create-a-smart-vim-package-manager/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/" data-id="ck6h6aksc0000xqovjfa4c0ui" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://blog.cano.xyz/2016/12/02/create-a-smart-vim-package-manager/">Comments</a>
     
 
         </footer>

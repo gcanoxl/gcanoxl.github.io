@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <title>白窦算法辅助程序</title>
+    <script>
+     function encode1(x, n) {
+	 if(x.charCodeAt() < 97 || x.charCodeAt() > 122) return x;
+	 var code = x.charCodeAt() + n;
+	 while(code > 122) code = code - 26;
+	 while(code < 97) code = code + 26;
+	 return String.fromCharCode(code);
+     };
+     function encode(s, n) {
+	 var answer = '';
+	 for (var i = 0; i < s.length; i++)
+	     answer += encode1(s[i], n);
+	 return answer;
+     };
+     window.onload = function() {
+	 var bt_start = document.getElementById('start');
+	 var ip_text = document.getElementById('text');
+	 var div_answer = document.getElementById('answer');
+	 bt_start.onclick = function() {
+	     var text = ip_text.value;
+	     div_answer.innerHTML = '';
+	     for(var i = 0; i < 26; i++)
+		 div_answer.innerHTML += 'n=' + i + '时： ' + encode(text, i) + '</br>';
+	 };
+     };
+    </script>
+  </head>
+  <body>
+    <div>欢迎来到白窦算法暴力破解程序</div>
+    <div>该算法使用26字母表顺序，输入密文后将计算出所有可能的明文，需要人为识别判断。</div>
+    <div>
+      <div>
+	<input id="text" name type="text" value>
+	<button id="start">开始暴力破解</button>
+      </div>
+      <div id="answer"></div>
+    </div>
+  </body>
+</html>
