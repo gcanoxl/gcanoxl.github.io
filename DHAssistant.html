@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <title>Deffie-Hellman Assistant -- by.Cano XL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/css/uikit.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/js/uikit-icons.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/bignumber.js/9.0.0/bignumber.min.js"></script>
+
+    <script>
+     const MAX_DIGIT = 4;
+     const MAX_NUMBER = 9999;
+     const MAX_PRIME = 9999;
+
+     BigNumber.DEBUG = true
+     BigNumber.config({EXPONENTIAL_AT: 100});
+
+     var g, a, p, b, A, B;
+
+     window.onload = function() {
+	 initPrimes();
+     };
+     
+    </script>
+  </head>
+  <script>
+   function hasClass(obj, cls) {return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));} 
+   function addClass(obj, cls) {if (!this.hasClass(obj, cls)) obj.className += " " + cls;} 
+   function removeClass(obj, cls) { 
+       if (hasClass(obj, cls)) {var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)'); 
+	   obj.className = obj.className.replace(reg, ' ');}} 
+
+   var prime_list = new Array();
+   function initPrimes() {
+       for(var i = 1; i <= MAX_PRIME; i += 2) prime_list[i] = i;
+       prime_list = prime_list.filter(a =>{for(let i = 2; i*i <= a; ++i)
+	   if(a % i === 0) return false;
+	   return a <= 1 ? false : true;});
+   }
+
+   function getRandomPrimeNumber() {
+       return Number(prime_list[Math.floor(Math.random() * prime_list.length)]);
+   };
+
+   function isFullOfNumber(str) {
+       var reg =/^[1-9]+[0-9]*]*$/;
+       return reg.test(str);
+   };
+
+   function toggleWarn(e, is_warn=false) {
+       if(is_warn) {
+	   removeClass(e, "uk-form-success");
+	   addClass(e, "uk-form-danger");
+       } else {
+	   removeClass(e, "uk-form-danger");
+	   addClass(e, "uk-form-success");
+       };
+   };
+
+   function checkFilledContent(e, is_prime = false) {
+       //check string whether full of number;
+       if(!isFullOfNumber(e.value)) return false;
+       //check number
+       var n = new BigNumber(e.value);
+       if(is_prime) {
+	   if(prime_list.indexOf(Number(n)) !== -1) return true; else return false;
+       } else {
+	   if(n.isGreaterThan(MAX_NUMBER) || n.isLessThan(0) || !n.isInteger()) return false;
+	   else return true;
+       }
+   };
+
+   function tryGenerateA(){
+       if(p && g && a) {
+	   var A = g.exponentiatedBy(a).modulo(p);
+	   var nA = document.getElementById('A');
+	   nA.innerHTML = A.toString();
+	   // update send
+	   var sendmsg = document.getElementById('sendmsgA');
+	   var msg = {p:p.toString(), g:g.toString(), A:A.toString()};
+	   sendmsg.value = JSON.stringify(msg);
+       };
+   };
+
+   function copyA(e){
+       var sendmsg = document.getElementById('sendmsgA');
+       if(sendmsg.value != "") {
+	   sendmsg.select();
+	   document.execCommand("Copy");
+	   e.innerHTML = "copyed";
+       };
+
+   }
+
+   function updateValue(e) {
+       var id = e.getAttribute("id");
+       var n = new BigNumber(e.value);
+       if(id === "p") p = n;
+       else if(id === "g") g = n;
+       else if(id === "a") a = n;
+       else if(id === "b") b = n;
+
+       tryGenerateA();
+       tryGenerateB();
+   };
+
+   function checkFilledInput(e, is_prime = false) {
+       if(checkFilledContent(e, is_prime)) {
+	   toggleWarn(e);
+	   updateValue(e);
+       } else {
+	   toggleWarn(e, true);
+       };
+   };
+
+   function autoGenerate(bt, is_prime = false) {
+       if(is_prime) var n = new BigNumber(getRandomPrimeNumber());
+       else var n = BigNumber.random(MAX_DIGIT).shiftedBy(MAX_DIGIT);
+       var parent = bt.parentNode;
+       var elem_child = parent.childNodes;
+       for(var i=0 in elem_child)
+	   if(elem_child[i].nodeName == "#text" && !/\S/.test(elem_child[i].nodeValue))
+	       parent.removeChild(elem_child[i]);
+       var input_node = elem_child[1];
+       input_node.value = n.toString();
+       checkFilledInput(input_node, is_prime);
+   };
+
+   function tryCalcSforA(e){
+       var B = new BigNumber(e.value);
+       if(p && B && a) {
+	   var sA = document.getElementById('sA');
+	   var s = B.exponentiatedBy(a).modulo(p);
+	   sA.innerHTML = s.toString();
+       };
+   };
+
+   function tryGenerateB(e) {
+       if(p && g && b) {
+	   var B = g.exponentiatedBy(b).modulo(p);
+	   var nB = document.getElementById('B');
+	   nB.value = B.toString();
+	   // calc s
+	   var s = A.exponentiatedBy(b).modulo(p);
+	   var sb = document.getElementById('sb');
+	   sb.innerHTML = s.toString();
+       };
+   };
+
+   function checkRec(e){
+       var j = JSON.parse(e.value);
+       p = new BigNumber(j['p']);
+       g = new BigNumber(j['g']);
+       A = new BigNumber(j['A']);
+       var np2 = document.getElementById('p2');
+       var ng2 = document.getElementById('g2');
+       var nA2 = document.getElementById('A2');
+       np2.value = p;
+       ng2.value = g;
+       nA2.value = A;
+       checkFilledInput(np2);
+       checkFilledInput(ng2);
+       checkFilledInput(nA2);
+   };
+
+   function copyB(e){
+       var nB = document.getElementById('B');
+       if(nB.value != "") {
+	   nB.select();
+	   document.execCommand("Copy");
+	   e.innerHTML = "copyed";
+       };
+
+   };
+   
+  </script>
+  <body>
+    <div id="main_box" class="ui-container uk-container-xsmall uk-align-center">
+      <ui uk-tab>
+	<li class="uk-active"><a href>Role A</a></li>
+	<li class><a href>Role B</a></li>
+	<li><a href>Help</a></li>
+      </ui>
+      <ul class="uk-switcher">
+	<li>
+	  <div class="uk-margin">
+	    <legend class="uk-legend">Role A</legend>
+	  </div>
+	  <div class="uk-margin">
+	    p:
+	    <input id="p" onchange="checkFilledInput(this, true)" class="uk-input uk-form-width-medium" type="text" placeholder="Prime Number p">
+	    <button onclick="autoGenerate(this, true)" class="uk-button uk-button-default">Generate</button>
+	  </div>
+	  <div class="uk-margin">
+	    g:
+	    <input id="g" oninput="checkFilledInput(this)" class="uk-input uk-form-width-medium" type="text" placeholder="Base Number g">
+	    <button onclick="autoGenerate(this)" class="uk-button uk-button-default">Generate</button>
+	  </div>
+	  <div class="uk-margin">
+	    a:
+	    <input id="a" oninput="checkFilledInput(this)" class="uk-input uk-form-width-medium" type="text" placeholder="Random Number a">
+	    <button onclick="autoGenerate(this)" class="uk-button uk-button-default">Generate</button>
+	  </div>
+	  <div class="uk-margin">
+	    <legend class="uk-legend">A = g^a mod p = <span id="A"></span></legend>
+	  </div>
+	  <div class="uk-margin">
+	    You should send the following to your friend (Role B);
+	    <input id="sendmsgA" class="uk-input uk-form-width-large" name type="text" value readonly="true/">
+	    <button class="uk-button uk-button-primary" onclick="copyA(this)">Copy</button>
+	    <!-- <button class="uk-button uk-button-secondary">Encode(Base64)</button> -->
+	  </div>
+	  <div class="uk-margin">
+	    B:
+	    <input id="BA" oninput="tryCalcSforA(this)" class="uk-input uk-form-width-medium" name type="text" value>
+	  </div>
+	  <div class="uk-margin">
+	    <legend class="uk-legend">
+	      s = B^a mod p = <span id="sA"></span>
+	    </legend>
+	  </div>
+	</li>
+	<li>
+	  <div class="uk-margin">
+	    <legend class="uk-legend">Role B</legend>
+	    <div class="uk-margin">
+	      Please enter or paste from clipboard the message your friend sent to you.
+	      <input oninput="checkRec(this)" class="uk-input uk-form-width-large" name type="text" value>
+	    </div>
+	    <div class="uk-margin">
+	      p:
+	      <input oninput="checkFilledInput(this)" id="p2" class="uk-input uk-form-width-medium" name type="text" value>
+	    </div>
+	    <div class="uk-margin">
+	      g:
+	      <input oninput="checkFilledInput(this)" id="g2" class="uk-input uk-form-width-medium" name type="text" value>
+	    </div>
+	    <div class="uk-margin">
+	      A:
+	      <input oninput="checkFilledInput(this)" id="A2" class="uk-input uk-form-width-medium" name type="text" value>
+	    </div>
+	    <div class="uk-margin">
+	      b:
+	      <input oninput="checkFilledInput(this)" id="b" class="uk-input uk-form-width-medium" name type="text" value>
+	      <button onclick="autoGenerate(this)" class="uk-button uk-button-default">Generate</button>
+	    </div>
+	    <div class="uk-margin">
+	      <legend class="uk-legend">B = g^a mod p = <input class="uk-input uk-form-width-small" id="B" readonly="true"></legend>
+	      <button onclick="copyB(this)" class="uk-button uk-button-primary">Copy</button>
+	      
+	    </div>
+	    <div class="uk-margin">
+	      <legend class="uk-legend">
+		s=A^b mod p = <span id="sb"></span>
+	      </legend>
+	    </div>
+	  </div>
+	</li>
+	<li>
+	  <div class="uk-alert-danger" uk-alert>
+	    <p>This feature is developing. Be patient please!</p>
+	  </div>
+	</li>
+      </ul>
+    </div>
+  </body>
+</html>
