@@ -103,6 +103,7 @@
        else if(id === "g") g = n;
        else if(id === "a") a = n;
        else if(id === "b") b = n;
+       console.log('update value');
 
        tryGenerateA();
        tryGenerateB();
@@ -162,7 +163,7 @@
        np2.value = p;
        ng2.value = g;
        nA2.value = A;
-       checkFilledInput(np2);
+       checkFilledInput(np2, true);
        checkFilledInput(ng2);
        checkFilledInput(nA2);
    };

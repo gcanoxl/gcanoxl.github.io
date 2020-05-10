@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.cano.xyz/2020/02/06/infosafe/</loc>
+    
+    <lastmod>2020-05-10T10:17:26.568Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.cano.xyz/DHAssistant.html</loc>
     
-    <lastmod>2020-02-12T12:15:19.474Z</lastmod>
+    <lastmod>2020-02-12T12:41:55.930Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.cano.xyz/about/index.html</loc>
+    
+    <lastmod>2020-02-12T12:09:36.493Z</lastmod>
     
   </url>
   
@@ -30,13 +44,6 @@
   </url>
   
   <url>
-    <loc>http://blog.cano.xyz/2020/02/06/infosafe/</loc>
-    
-    <lastmod>2020-02-06T03:36:47.137Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.cano.xyz/2019/04/15/using-git-to-backup-minecraft-world/</loc>
     
     <lastmod>2019-04-15T12:38:32.000Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://blog.cano.xyz/yjj.html</loc>
     
     <lastmod>2019-04-08T12:29:43.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.cano.xyz/about/index.html</loc>
-    
-    <lastmod>2018-02-27T22:24:47.000Z</lastmod>
     
   </url>
   
