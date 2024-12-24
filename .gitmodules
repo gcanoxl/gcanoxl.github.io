@@ -1,3 +1,6 @@
 [submodule "themes/almeida-cv"]
 	path = themes/almeida-cv
 	url = https://github.com/ineesalmeida/almeida-cv.git
+[submodule "themes/reimu"]
+	path = themes/reimu
+	url = https://github.com/D-Sketon/hugo-theme-reimu.git
