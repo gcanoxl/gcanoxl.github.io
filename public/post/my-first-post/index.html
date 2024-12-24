@@ -110,7 +110,7 @@
     property="og:description"
     content="Learn or die, or die of learning"
   />
-  <meta property="og:url" content="http://localhost:1313/posts/my-first-post/" />
+  <meta property="og:url" content="http://localhost:1313/post/my-first-post/" />
   <meta
     property="og:site_name"
     content="My New Hugo Site"
@@ -335,7 +335,7 @@
     <div class="article-meta">
       <div class="article-date">
   <a
-    href="http://localhost:1313/posts/my-first-post/"
+    href="http://localhost:1313/post/my-first-post/"
     class="article-date-link"
     data-aos="zoom-in"
   >
@@ -383,6 +383,9 @@
     </footer>
   </div>
   
+    
+
+  
 </article>
 
 
@@ -397,13 +400,22 @@
 </section>
           
             <aside id="sidebar">
-  <div class="sidebar-wrapper ">
+  <div class="sidebar-wrapper wrap-sticky">
     <div
       class="sidebar-wrap"
       data-aos="fade-up"
     >
       
-        
+        <div class="sidebar-toc-sidebar">
+          <div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+        </div>
+        <div class="sidebar-common-sidebar hidden">
+          
 <div class="sidebar-author">
   <img
     data-src="/avatar/avatar.webp"
@@ -418,7 +430,7 @@
   <div class="sidebar-state-article">
     <div>Posts</div>
     
-    <div class="sidebar-state-number">0</div>
+    <div class="sidebar-state-number">1</div>
   </div>
   <div class="sidebar-state-category">
     <div>Categories</div>
@@ -470,32 +482,18 @@
   
 </div>
 
+        </div>
       
 
+      
+        <div class="sidebar-btn-wrapper" style="position:static">
+          <div class="sidebar-toc-btn current"></div>
+          <div class="sidebar-common-btn"></div>
+        </div>
       
     </div>
   </div>
 
-  
-    
-      
-  
-  <div class="widget-wrapper">
-    <div
-      class="widget-wrap"
-      data-aos="fade-up"
-    >
-      <h3 class="widget-title">Recent Posts</h3>
-      <div class="widget">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-    
   
 </aside>
 
@@ -504,6 +502,9 @@
         
 
 
+
+  
+  
 
 
 
@@ -536,7 +537,7 @@
       <div>
         <span class="icon-brush"
           >&nbsp;
-            0
+            5
           </span
         >
         &nbsp;|&nbsp;
@@ -544,7 +545,7 @@
           
           
 
-          00:00
+          00:01
         </span>
       </div>
     
@@ -581,7 +582,16 @@
       <nav id="mobile-nav">
   <div class="sidebar-wrap">
     
-      
+      <div class="sidebar-toc-sidebar">
+        <div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+      </div>
+      <div class="sidebar-common-sidebar hidden">
+        
 <div class="sidebar-author">
   <img
     data-src="/avatar/avatar.webp"
@@ -596,7 +606,7 @@
   <div class="sidebar-state-article">
     <div>Posts</div>
     
-    <div class="sidebar-state-number">0</div>
+    <div class="sidebar-state-number">1</div>
   </div>
   <div class="sidebar-state-category">
     <div>Categories</div>
@@ -648,8 +658,14 @@
   
 </div>
 
+      </div>
     
   </div>
+  
+    <div class="sidebar-btn-wrapper">
+      <div class="sidebar-toc-btn current"></div>
+      <div class="sidebar-common-btn"></div>
+    </div>
   
 </nav>
 
