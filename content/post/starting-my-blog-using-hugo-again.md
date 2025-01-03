@@ -14,7 +14,7 @@ Unfortunately, For about 8 years, I only wrote 3 articles on it. The reasons cou
 
 ### Perfectionism procrastination
 
-It is impossible to say there were no valuable ideas that came into my mind and that I want to express during the last 8 years. Every time it occurred, I would think: "Is it good enough to share?", "It is really valuable enough to tell others?", "Can't it be better after a longer period of my thinking?"
+It is impossible to say there were no valuable ideas that came into my mind and that I wanted to express during the last 8 years. Every time it occurred, I would think: "Is it good enough to share?", "It is really valuable enough to tell others?", "Can't it be better after a longer period of my thinking?"
 
 In the end, it turned out stillborn.
 
@@ -26,7 +26,7 @@ So, my laziness was also a factor in not cranking out articles.
 
 ### Failed to install Hexo on my new laptop
 
-Yeah, this reason was the decisive reason. I just could not install the Hexo and recover the old writing environments after buying and switching to my m1 MacBook Pro.
+Yeah, this reason was the decisive reason. I just could not install the Hexo and recover the old writing environments after buying and switching to my M1 MacBook Pro.
 
 By the way: I really want to condemn the disgusting `npm` all out. It is so rare that I successfully install all dependencies using `npm` without any problems about which I need to consult Google or Stackoverflow etc that I would buy a lottery ticket immediately when it does.
 
@@ -41,7 +41,7 @@ And I switch to Hugo, which helps me solve the rest 2 problems.
 
 ### Desire to express
 
-The desire to express one's thoughts can be part of human nature. After clearing out all impediments, it emerges automatically.
+The desire to express one's thoughts can be part of human nature. After clearing out all impediments, it emerged automatically.
 
 ### Leave something in the world
 Sometimes, I would think of the day I leave the world, no matter in what ways, naturally aging or unexpected accident. I hope I can leave something in the world.
