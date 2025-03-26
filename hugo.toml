@@ -6,3 +6,7 @@ theme = 'reimu'
 [markup.highlight]
 guessSyntax = true
 noClasses = false
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

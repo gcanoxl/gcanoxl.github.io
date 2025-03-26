@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cano&#39;s Personal Blog</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Cano&#39;s Personal Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 31 Dec 2024 02:02:06 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Books I Read in 2024</title>
+      <link>http://localhost:1313/post/books-i-read-in-2024/</link>
+      <pubDate>Tue, 31 Dec 2024 02:02:06 +0800</pubDate>
+      <guid>http://localhost:1313/post/books-i-read-in-2024/</guid>
+      <description>&lt;h1 id=&#34;books-i-read-in-2024&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#books-i-read-in-2024&#34;&gt;&lt;/a&gt;&#xA;Books I Read in 2024&#xA;&lt;/h1&gt;&lt;p&gt;Today is 2024 Dec 31, the last day of 2024.&lt;/p&gt;&#xA;&lt;p&gt;Here, I present the books I read in this year and give some of my insights for each of them.&lt;/p&gt;&#xA;&lt;p&gt;If you are looking for a book, I hope this helps.&lt;/p&gt;&#xA;&lt;h2 id=&#34;&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#&#34;&gt;&lt;/a&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;/h2&gt;&lt;p&gt;It is the third book of the Harry Potter series.&lt;/p&gt;&#xA;&lt;p&gt;In the past 3 years, I kept reading it at a speed of one book a year.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Starting My Blog Using Hugo Again</title>
+      <link>http://localhost:1313/post/starting-my-blog-using-hugo-again/</link>
+      <pubDate>Tue, 24 Dec 2024 23:54:22 +0800</pubDate>
+      <guid>http://localhost:1313/post/starting-my-blog-using-hugo-again/</guid>
+      <description>&lt;h1 id=&#34;i-started-my-blog-again-using-hugo&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#i-started-my-blog-again-using-hugo&#34;&gt;&lt;/a&gt;&#xA;I started my blog again using Hugo&#xA;&lt;/h1&gt;&lt;p&gt;I started my blog again, with Hugo, on Christmas Eve. (Actually, it&amp;rsquo;s just a coincidence.)&lt;/p&gt;&#xA;&lt;p&gt;Several years ago, I already owned a blog, built with Hexo, decorated with a carefully chosen theme, and armed with a comment system called &lt;a href=&#34;https://disqus.com/&#34;&gt;disqus&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-previous-blog&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#my-previous-blog&#34;&gt;&lt;/a&gt;&#xA;My previous blog&#xA;&lt;/h2&gt;&lt;p&gt;Unfortunately, For about 8 years, I only wrote 3 articles on it. The reasons could be various, generally speaking, the following ones:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
