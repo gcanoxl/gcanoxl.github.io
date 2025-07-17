@@ -3,9 +3,19 @@
   <channel>
     <title>Categories on Cano&#39;s Personal Blog</title>
     <link>http://localhost:1313/categories/</link>
-    <description>Recent content in Categories on Cano&#39;s Personal Blog</description>
+    <description>Recent content from Cano&#39;s Personal Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    <managingEditor>xxx@example.com (Cano XL)</managingEditor>
+    <webMaster>xxx@example.com (Cano XL)</webMaster>
+    
+    <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
+    
+    
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
   </channel>
 </rss>

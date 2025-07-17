@@ -3,24 +3,75 @@
   <channel>
     <title>Posts on Cano&#39;s Personal Blog</title>
     <link>http://localhost:1313/post/</link>
-    <description>Recent content in Posts on Cano&#39;s Personal Blog</description>
+    <description>Recent content from Cano&#39;s Personal Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    
+    <managingEditor>xxx@example.com (Cano XL)</managingEditor>
+    <webMaster>xxx@example.com (Cano XL)</webMaster>
+    
+    <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
+    
     <lastBuildDate>Tue, 31 Dec 2024 02:02:06 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
     <item>
       <title>Books I Read in 2024</title>
       <link>http://localhost:1313/post/books-i-read-in-2024/</link>
-      <pubDate>Tue, 31 Dec 2024 02:02:06 +0800</pubDate>
+      <pubDate>Tue, 31 Dec 2024 02:02:06 &#43;0800</pubDate>
+      <author>xxx@example.com (Cano XL)</author>
       <guid>http://localhost:1313/post/books-i-read-in-2024/</guid>
-      <description>&lt;h1 id=&#34;books-i-read-in-2024&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#books-i-read-in-2024&#34;&gt;&lt;/a&gt;&#xA;Books I Read in 2024&#xA;&lt;/h1&gt;&lt;p&gt;Today is 2024 Dec 31, the last day of 2024.&lt;/p&gt;&#xA;&lt;p&gt;Here, I present the books I read in this year and give some of my insights for each of them.&lt;/p&gt;&#xA;&lt;p&gt;If you are looking for a book, I hope this helps.&lt;/p&gt;&#xA;&lt;h2 id=&#34;&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#&#34;&gt;&lt;/a&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;/h2&gt;&lt;p&gt;It is the third book of the Harry Potter series.&lt;/p&gt;&#xA;&lt;p&gt;In the past 3 years, I kept reading it at a speed of one book a year.&lt;/p&gt;</description>
+      <description>
+        <![CDATA[<h1>Books I Read in 2024</h1><p>Author: Cano XL(xxx@example.com)</p>
+        
+          <h1 id="books-i-read-in-2024">
+<a class="header-anchor" href="#books-i-read-in-2024"></a>
+Books I Read in 2024
+</h1><p>Today is 2024 Dec 31, the last day of 2024.</p>
+<p>Here, I present the books I read this year and give some of my insights and after-read comments for each of them.</p>
+<p>If you are looking for a book, I hope this helps.</p>
+<h2 id="harry-potter-and-the-prisoner-of-azkaban">
+<a class="header-anchor" href="#harry-potter-and-the-prisoner-of-azkaban"></a>
+Harry Potter and the Prisoner of Azkaban
+</h2><p>It is the third book of the Harry Potter series.</p>
+<p>In the past 3 years, I kept reading it at a speed of one book per year.</p>
+        
+        <hr><p>Published on 2024-12-31 at <a href='http://localhost:1313/'>Cano's Personal Blog</a>, last modified on 2024-12-31</p>]]>
+      </description>
+      
     </item>
+    
+    
+
     <item>
       <title>Starting My Blog Using Hugo Again</title>
       <link>http://localhost:1313/post/starting-my-blog-using-hugo-again/</link>
-      <pubDate>Tue, 24 Dec 2024 23:54:22 +0800</pubDate>
+      <pubDate>Tue, 24 Dec 2024 23:54:22 &#43;0800</pubDate>
+      <author>xxx@example.com (Cano XL)</author>
       <guid>http://localhost:1313/post/starting-my-blog-using-hugo-again/</guid>
-      <description>&lt;h1 id=&#34;i-started-my-blog-again-using-hugo&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#i-started-my-blog-again-using-hugo&#34;&gt;&lt;/a&gt;&#xA;I started my blog again using Hugo&#xA;&lt;/h1&gt;&lt;p&gt;I started my blog again, with Hugo, on Christmas Eve. (Actually, it&amp;rsquo;s just a coincidence.)&lt;/p&gt;&#xA;&lt;p&gt;Several years ago, I already owned a blog, built with Hexo, decorated with a carefully chosen theme, and armed with a comment system called &lt;a href=&#34;https://disqus.com/&#34;&gt;disqus&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-previous-blog&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#my-previous-blog&#34;&gt;&lt;/a&gt;&#xA;My previous blog&#xA;&lt;/h2&gt;&lt;p&gt;Unfortunately, For about 8 years, I only wrote 3 articles on it. The reasons could be various, generally speaking, the following ones:&lt;/p&gt;</description>
+      <description>
+        <![CDATA[<h1>Starting My Blog Using Hugo Again</h1><p>Author: Cano XL(xxx@example.com)</p>
+        
+          <h1 id="i-started-my-blog-again-using-hugo">
+<a class="header-anchor" href="#i-started-my-blog-again-using-hugo"></a>
+I started my blog again using Hugo
+</h1><p>I started my blog again, with Hugo, on Christmas Eve. (Actually, it&rsquo;s just a coincidence.)</p>
+<p>Several years ago, I already owned a blog, built with Hexo, decorated with a carefully chosen theme, and armed with a comment system called <a href="https://disqus.com/">disqus</a>.</p>
+<h2 id="my-previous-blog">
+<a class="header-anchor" href="#my-previous-blog"></a>
+My previous blog
+</h2><p>Unfortunately, For about 8 years, I only wrote 3 articles on it. The reasons could be various, generally speaking, the following ones:</p>
+        
+        <hr><p>Published on 2024-12-24 at <a href='http://localhost:1313/'>Cano's Personal Blog</a>, last modified on 2024-12-24</p>]]>
+      </description>
+      
     </item>
+    
   </channel>
 </rss>

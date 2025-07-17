@@ -11,6 +11,10 @@
       <div class="code-copy icon-copy"></div>
       <div class="icon-chevron-down code-expand"></div>
     </div>
+  </div>
+  <div class="code-figcaption-bottom">
+    <span class="code-name"></span>
+    <a class="code-link"></a>
   </div>`;
     const reimuConfig = window.siteConfig?.code_block || {};
     const expandThreshold = reimuConfig.expand;
@@ -21,17 +25,43 @@
       if (expandThreshold !== void 0) {
         if (expandThreshold === false || typeof expandThreshold === "number" && element.querySelectorAll("code[data-lang] .line").length > expandThreshold) {
           element.classList.add("code-closed");
+          element.style.display = "none";
+          void element.offsetWidth;
+          element.style.display = "";
         }
+      }
+      const codeFigcaptionBottom = element.querySelector(
+        ".code-figcaption-bottom"
+      );
+      const fileName = element.getAttribute("name");
+      const codeName = element.querySelector(".code-name");
+      if (fileName) {
+        codeName.innerText = fileName;
+      } else {
+        codeName.innerText = "";
+      }
+      const url = element.getAttribute("url");
+      const linkText = element.getAttribute("link_text");
+      const codeLink = element.querySelector(".code-link");
+      if (url) {
+        codeLink.setAttribute("href", url);
+        codeLink.innerText = linkText || url;
+        codeFigcaptionBottom.classList.add("has-link");
+      } else {
+        codeLink.setAttribute("href", "");
+        codeLink.innerText = "";
+        codeFigcaptionBottom.classList.remove("has-link");
+      }
+      if (fileName || url) {
+        codeFigcaptionBottom.style.marginBottom = "0.5em";
+      } else {
+        codeFigcaptionBottom.style.marginBottom = "0";
       }
     });
     _$$(".code-expand").forEach((element) => {
       element.off("click").on("click", () => {
         const figure = element.closest("div.highlight");
-        if (figure.classList.contains("code-closed")) {
-          figure.classList.remove("code-closed");
-        } else {
-          figure.classList.add("code-closed");
-        }
+        figure.classList.toggle("code-closed");
       });
     });
     _$$("div.highlight").forEach((element) => {
@@ -85,7 +115,18 @@
     clipboard.on("success", (e) => {
       e.trigger.classList.add("icon-check");
       e.trigger.classList.remove("icon-copy");
-      _$("#copy-tooltip").innerText = window.siteConfig.clipboard.success;
+      const successConfig = window.siteConfig.clipboard.success;
+      let successText = "Copy successfully (*^\u25BD^*)";
+      if (typeof successConfig === "string") {
+        successText = successConfig;
+      } else if (typeof successConfig === "object") {
+        const lang = document.documentElement.lang;
+        const key = Object.keys(successConfig).find((key2) => key2.toLowerCase() === lang.toLowerCase());
+        if (key && successConfig[key]) {
+          successText = successConfig[key];
+        }
+      }
+      _$("#copy-tooltip").innerText = successText;
       _$("#copy-tooltip").style.opacity = "1";
       setTimeout(() => {
         _$("#copy-tooltip").style.opacity = "0";
@@ -97,7 +138,18 @@
     clipboard.on("error", (e) => {
       e.trigger.classList.add("icon-times");
       e.trigger.classList.remove("icon-copy");
-      _$("#copy-tooltip").innerText = window.siteConfig.clipboard.fail;
+      const failConfig = window.siteConfig.clipboard.fail;
+      let failText = "Copy failed (\uFF9F\u22BF\uFF9F)\uFF82";
+      if (typeof failConfig === "string") {
+        failText = failConfig;
+      } else if (typeof failConfig === "object") {
+        const lang = document.documentElement.lang;
+        const key = Object.keys(failConfig).find((key2) => key2.toLowerCase() === lang.toLowerCase());
+        if (key && failConfig[key]) {
+          failText = failConfig[key];
+        }
+      }
+      _$("#copy-tooltip").innerText = failText;
       _$("#copy-tooltip").style.opacity = "1";
       setTimeout(() => {
         _$("#copy-tooltip").style.opacity = "0";
@@ -113,6 +165,9 @@
         },
         { once: true }
       );
+    }
+    if (window.AOS) {
+      AOS.refresh();
     }
   })();
 })();

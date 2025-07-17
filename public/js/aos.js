@@ -16,25 +16,6 @@
           }, delay);
         };
       };
-      var throttle = (func, limit) => {
-        let lastFunc, lastRan;
-        return (...args) => {
-          const context = exports;
-          if (!lastRan || Date.now() - lastRan >= limit) {
-            func.apply(context, args);
-            lastRan = Date.now();
-          } else {
-            clearTimeout(lastFunc);
-            lastFunc = setTimeout(
-              () => {
-                func.apply(context, args);
-                lastRan = Date.now();
-              },
-              limit - (Date.now() - lastRan)
-            );
-          }
-        };
-      };
       var __aosScrollHandler;
       var __aosResizeHandler;
       var __observer;
