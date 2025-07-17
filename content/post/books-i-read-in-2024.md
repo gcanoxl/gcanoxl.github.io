@@ -1,6 +1,6 @@
 +++
 date = '2024-12-31T02:02:06+08:00'
-draft = true
+draft = false
 title = 'Books I Read in 2024'
 +++
 # Books I Read in 2024
